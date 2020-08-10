@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "973673956555",
+    "firebase_url": "https://rsecommerce-709fd.firebaseio.com",
+    "project_id": "rsecommerce-709fd",
+    "storage_bucket": "rsecommerce-709fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973673956555:android:6ca8512f9786c76a74c74e",
+        "android_client_info": {
+          "package_name": "com.example.e_commerce_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973673956555-70qtose85fg456crvrnncf6fu6nlh2u5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSMQRJa2rIe7Np54Az0_fgIa_6BoGV0QI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973673956555-70qtose85fg456crvrnncf6fu6nlh2u5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
