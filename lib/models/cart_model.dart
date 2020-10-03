@@ -31,12 +31,12 @@ class CartModel{
   }
   
   CartModel.fromDocumentSnapshot(DocumentSnapshot documentSnapshot){
-    this.userId = documentSnapshot.data['${ DBProduct.idUserColumn}'];
-    this.traderId = documentSnapshot.data['${ DBProduct.idTraderColumn}'];
-    this.productId = documentSnapshot.data['${ DBProduct.idProductColumn}'];
-    this.imageUrlProduct = documentSnapshot.data['${ DBProduct.imagUrlProductColumn}'];
-    this.titleProduct = documentSnapshot.data['${ DBProduct.titleProductColumn}'];
-    this.price = documentSnapshot.data['${ DBProduct.priceProductColum}'];
+    this.userId = documentSnapshot.data()['${ DBProduct.idUserColumn}'];
+    this.traderId = documentSnapshot.data()['${ DBProduct.idTraderColumn}'];
+    this.productId = documentSnapshot.data()['${ DBProduct.idProductColumn}'];
+    this.imageUrlProduct = documentSnapshot.data()['${ DBProduct.imagUrlProductColumn}'];
+    this.titleProduct = documentSnapshot.data()['${ DBProduct.titleProductColumn}'];
+    this.price = documentSnapshot.data()['${ DBProduct.priceProductColum}'];
     
   }
 

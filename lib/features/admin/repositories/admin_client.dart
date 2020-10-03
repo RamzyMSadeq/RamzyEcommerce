@@ -10,7 +10,7 @@ class AdminClient{
   AdminClient._();
 
   static final AdminClient adminClient = AdminClient._();
-  Firestore firestore = Firestore.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
 
   Future<String> addNewUser(UserModel userModel)async{
@@ -21,7 +21,7 @@ class AdminClient{
      .collection("LogInUsers")
      .add(userModel.toJson());
      print("aaaaaaaaaaaaaaaaaaa ");
-     return documentReference.documentID;
+     return documentReference.id;
     }catch(error){
       print(error);
     }
@@ -34,8 +34,8 @@ class AdminClient{
      QuerySnapshot querySnapshot = await firestore
      .collection("LogInUsers")
      .where("userId" ,isEqualTo: userId)
-     .getDocuments();
-     return querySnapshot.documents;
+     .get();
+     return querySnapshot.docs;
 
     }catch(error){
       print(error);
@@ -67,7 +67,7 @@ class AdminClient{
      DocumentReference documentReference = await firestore
      .collection("Products")
      .add(product.toJsone());
-     return documentReference.documentID;
+     return documentReference.id;
     }catch(erroe){
       print(erroe);
     }
@@ -79,8 +79,8 @@ class AdminClient{
    try{
      QuerySnapshot querySnapshot = await firestore
    .collection("Products")
-   .getDocuments();
-   return querySnapshot.documents;
+   .get();
+   return querySnapshot.docs;
 
    }catch(error){
      print(error);
@@ -91,7 +91,7 @@ class AdminClient{
    try{
     DocumentSnapshot documentSnapshot=  await firestore
    .collection("Products")
-   .document(productModel.documentId)
+   .doc(productModel.documentId)
    .get();
    
    return documentSnapshot;
@@ -106,8 +106,8 @@ class AdminClient{
     try{
       firestore
       .collection('Products')
-      .document(product.documentId)
-      .setData(product.toJsone());
+      .doc(product.documentId)
+      .set(product.toJsone());
 
     }catch(error){
       print(error);
@@ -119,7 +119,7 @@ class AdminClient{
     try{
        firestore
       .collection('Products')
-      .document(documentId)
+      .doc(documentId)
       .delete();
 
     }catch(error){
@@ -132,9 +132,9 @@ class AdminClient{
      QuerySnapshot querySnapshot = await firestore
    .collection("Products")
    .where('storeId' , isEqualTo: userId)
-   .getDocuments();
+   .get();
    
-   return querySnapshot.documents;
+   return querySnapshot.docs;
 
    }catch(error){
      print(error);

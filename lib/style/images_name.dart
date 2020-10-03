@@ -1,0 +1,9 @@
+final String logoName = 'assets/images/logo.png';
+final String splashImageName = 'assets/images/client.png';
+final String bottomImageName = 'assets/images/Facebook.png';
+final String onboarding1Name = 'assets/images/gazamap.png';
+final String onboarding2Name = 'assets/images/fb.png';
+final String onboarding3Name = 'assets/images/gmail.png';
+final String chooseUserName = 'assets/images/logoicon.png';
+final String product1 = 'assets/images/logocolor.png';
+final String backgroundFormsName = 'assets/images/cart.png';

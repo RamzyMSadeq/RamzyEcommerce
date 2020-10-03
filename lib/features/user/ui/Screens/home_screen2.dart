@@ -34,7 +34,7 @@ class HomeScreen2 extends StatelessWidget {
     Provider.of<AdminProvider>(context , listen: false).currentUserId();
     Provider.of<AdminProvider>(context , listen: false).getAllProducts();
     List<ProductModel> myListTest = Provider.of<AdminProvider>(context ).allProducts;
-    FirebaseUser fireUser = Provider.of<AdminProvider>(context , listen: false).currentUser;
+    User fireUser = Provider.of<AdminProvider>(context , listen: false).currentUser;
       if(fireUser != null){
     Provider.of<AdminProvider>(context , listen: false).getProductByUserId(fireUser.uid);
 

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce_project/features/admin/providers/admin_provider.dart';
 import 'package:e_commerce_project/features/user/Provider/e_c_provider.dart';
 import 'package:e_commerce_project/features/user/ui/Screens/profile_user_Home.dart';
 import 'package:e_commerce_project/features/user/ui/Screens/profile_user_about.dart';
@@ -16,16 +15,16 @@ import 'dart:math' as math;
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-class ProfileTrader extends StatefulWidget {
+class ProfileTrader2 extends StatefulWidget {
   UserModel myStore;
-  ProfileTrader(this.myStore);
+  ProfileTrader2(this.myStore);
   
 
   @override
-  _ProfileTraderState createState() => _ProfileTraderState();
+  _ProfileTrader2State createState() => _ProfileTrader2State();
 }
 
-class _ProfileTraderState extends State<ProfileTrader>
+class _ProfileTrader2State extends State<ProfileTrader2>
     with SingleTickerProviderStateMixin {
   TabController tabController;
   String follow = 'Follow';
@@ -254,7 +253,7 @@ class _ProfileTraderState extends State<ProfileTrader>
                         width: 150,
                         height: 40,
                         color: style.Colors.secondColor,
-                        child:widget.myStore.isAdmin == true ?
+                        child:widget.myStore.isAdmin == false ?
                          FlatButton(
                             onPressed: () {
                               if (num == 0) {

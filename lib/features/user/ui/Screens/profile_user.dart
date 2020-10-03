@@ -30,7 +30,7 @@ class _ProfileUserState extends State<ProfileUser>
       body: Consumer<AdminProvider>(
         builder: (context, value, child) {
           value.currentUserId();
-          FirebaseUser fireUser = value.currentUser;
+          User fireUser = value.currentUser;
           print("ttttttttttttt ${fireUser.uid}");
           value.getProductByUserId(fireUser.uid);
           UserModel myUserDetails = value.userById;

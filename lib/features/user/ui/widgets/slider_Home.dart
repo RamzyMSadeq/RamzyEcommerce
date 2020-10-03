@@ -61,7 +61,7 @@ class _SliderHomeState extends State<SliderHome> {
           );},
         child: Container(
           
-          child: ContainerSlider(imgUrl: 'assets/images/slider.png' ,)))),
+          child: ContainerSlider(imgUrl: 'assets/images/sl5.jpg' ,)))),
 
 
       Hero(tag: 'a',

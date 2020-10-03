@@ -34,19 +34,19 @@ class UserModel{
 
 
   UserModel.fromDocumentSnapshot(DocumentSnapshot documentSnapshot){
-    this.id = documentSnapshot.documentID;
-    this.email = documentSnapshot.data["email"];
-    this.password = documentSnapshot.data["password"];
-    this.isAdmin = documentSnapshot.data["isAdmin"];
-    this.userId =  documentSnapshot.data["userId"];
-    this.imgProfile =  documentSnapshot.data["imgProfile"];
-    this.imgCover =  documentSnapshot.data["imgCover"];
-    this.address =  documentSnapshot.data["address"];
-    this.pio =  documentSnapshot.data["pio"];
-    this.mobileNum =  documentSnapshot.data["mobileNum"];
-    this.name =  documentSnapshot.data["name"];
-    this.latitude = documentSnapshot.data["latitude"];
-    this.longitude = documentSnapshot.data["longitude"];
+    this.id = documentSnapshot.id;
+    this.email = documentSnapshot.data()["email"];
+    this.password = documentSnapshot.data()["password"];
+    this.isAdmin = documentSnapshot.data()["isAdmin"];
+    this.userId =  documentSnapshot.data()["userId"];
+    this.imgProfile =  documentSnapshot.data()["imgProfile"];
+    this.imgCover =  documentSnapshot.data()["imgCover"];
+    this.address =  documentSnapshot.data()["address"];
+    this.pio =  documentSnapshot.data()["pio"];
+    this.mobileNum =  documentSnapshot.data()["mobileNum"];
+    this.name =  documentSnapshot.data()["name"];
+    this.latitude = documentSnapshot.data()["latitude"];
+    this.longitude = documentSnapshot.data()["longitude"];
 
   }
 

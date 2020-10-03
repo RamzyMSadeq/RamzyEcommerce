@@ -27,16 +27,16 @@ class ProductModel{
   });
 
   ProductModel.fromDocumentSnapshot(DocumentSnapshot documentSnapshot){
-    this.documentId = documentSnapshot.documentID;
-    this.imageUrl = documentSnapshot.data['imageUrl'];
-    this.title = documentSnapshot.data['title'];
-    this.rating = documentSnapshot.data['rating'];
-    this.price = documentSnapshot.data['price'];
-    this.isOffer = documentSnapshot.data['isOffer'];
-    this.discount = documentSnapshot.data['discount'];
-    this.category = documentSnapshot.data['category'];
-    this.subCategory = documentSnapshot.data['subCategory'];
-    this.storeId = documentSnapshot.data['storeId'];
+    this.documentId = documentSnapshot.id;
+    this.imageUrl = documentSnapshot.data()['imageUrl'];
+    this.title = documentSnapshot.data()['title'];
+    this.rating = documentSnapshot.data()['rating'];
+    this.price = documentSnapshot.data()['price'];
+    this.isOffer = documentSnapshot.data()['isOffer'];
+    this.discount = documentSnapshot.data()['discount'];
+    this.category = documentSnapshot.data()['category'];
+    this.subCategory = documentSnapshot.data()['subCategory'];
+    this.storeId = documentSnapshot.data()['storeId'];
 
   }
 

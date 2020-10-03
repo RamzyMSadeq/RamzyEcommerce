@@ -29,7 +29,7 @@ class _AddProductState extends State<AddProduct> {
         builder: (context, value, child) {
           String imageurl = value.imageUrl;
            value.currentUserId();
-           FirebaseUser fireUser = value.currentUser;
+           User fireUser = value.currentUser;
           return Container(
           height: ScreenUtil().setHeight(800),
           width: ScreenUtil().setWidth(411),

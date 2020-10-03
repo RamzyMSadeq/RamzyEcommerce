@@ -21,7 +21,7 @@ class AdminProvider extends ChangeNotifier{
   double discount;
   String category ;
   String subCategory;
-  FirebaseUser currentUser;
+  User currentUser;
   ProductModel myProduct;
   UserModel userById  ;
   bool indecator = false;
@@ -75,7 +75,7 @@ class AdminProvider extends ChangeNotifier{
 
   }
    currentUserId()async{
-    FirebaseUser firebaseUser= await  AuthService.auth.firebaseAuth.currentUser();
+    User firebaseUser= await  AuthService.auth.firebaseAuth.currentUser;
     this.currentUser = firebaseUser;
     notifyListeners();
     

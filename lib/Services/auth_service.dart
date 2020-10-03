@@ -1,4 +1,5 @@
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_commerce_project/features/admin/providers/admin_provider.dart';
 import 'package:e_commerce_project/features/admin/repositories/admin_client.dart';
 import 'package:e_commerce_project/features/admin/ui/dashboard/screens/home_dashboard.dart';
@@ -21,7 +22,7 @@ class AuthService{
 
   Future<String> registerWithEmail(String email , String pass)async{
     try{
-     AuthResult authResult = await firebaseAuth.createUserWithEmailAndPassword(email: email, password: pass); 
+     UserCredential authResult = await firebaseAuth.createUserWithEmailAndPassword(email: email, password: pass); 
      String userId = authResult.user.uid;  
      
      return userId;  
@@ -32,14 +33,14 @@ class AuthService{
 
   }
   redirect(BuildContext context)async{
-    firebaseAuth.currentUser().then((user) {
-      AdminClient.adminClient.firestore
+    User user = await firebaseAuth.currentUser;
+    AdminClient.adminClient.firestore
       .collection("LogInUsers")
       .where('userId', isEqualTo: user.uid)
-      .getDocuments()
+      .get()
       .then((value){
-        if(value.documents[0].exists){
-           if(value.documents[0].data['isAdmin']==true){
+        if(value.docs[0].exists){
+           if(value.docs[0].data()['isAdmin']==true){
               HandlSt.handlSt.setShared(user.uid, true , 'Admin');
               Provider.of<AdminProvider>(context , listen: false).setImageUrl(null);
               Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
@@ -56,23 +57,20 @@ class AuthService{
            }
         }
       });
-
-    });
-
   }
   
 
-  Future< FirebaseUser> logInWithEmail(String email , String pass) async{
+  Future< User> logInWithEmail(String email , String pass) async{
     try{
-      AuthResult result =
+      UserCredential result =
       await firebaseAuth.signInWithEmailAndPassword(email: email, password: pass);
        String userId = result.user.uid;
-      FirebaseUser user = result.user;
+      User user = result.user;
       
      
      return user;
-    }catch(e){
-      print(e);
+    } catch(e){
+       print(e);
     }
      
   }
@@ -84,8 +82,8 @@ class AuthService{
       GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
       String idToken=  googleSignInAuthentication.idToken;
       String accessToken=  googleSignInAuthentication.accessToken;
-      AuthCredential authCredential= await GoogleAuthProvider.getCredential(idToken: idToken, accessToken: accessToken);
-      AuthResult authResult = await firebaseAuth.signInWithCredential(authCredential);
+      AuthCredential authCredential= await GoogleAuthProvider.credential(idToken: idToken, accessToken: accessToken);
+      UserCredential authResult = await firebaseAuth.signInWithCredential(authCredential);
 
       return authResult.user;
 

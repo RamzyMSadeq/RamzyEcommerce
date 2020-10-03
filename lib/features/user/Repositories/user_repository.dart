@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_project/features/admin/repositories/admin_client.dart';
 import 'package:e_commerce_project/features/user/Repositories/user_Client.dart';
+import 'package:e_commerce_project/models/category_model.dart';
 import 'package:e_commerce_project/models/order_model.dart';
 import 'package:e_commerce_project/models/product_model.dart';
+import 'package:e_commerce_project/models/slider_model.dart';
 import 'package:e_commerce_project/models/userModel.dart';
 
 class UserRepository{
@@ -59,6 +61,33 @@ Future<List<UserModel>> getStoreById(String userId)async{
    List<ProductModel> products = 
      resultList.map((e) => ProductModel.fromDocumentSnapshot(e)).toList();
      return products;
+
+   }catch(error){
+     print(error);
+   }
+
+  }
+
+   Future<List<CategoryModel>> getAllCaategory()async{
+   try{
+     List<DocumentSnapshot> resultList = await UserClient.userClient.getAllCategory();
+    
+   List<CategoryModel> category = 
+     resultList.map((e) => CategoryModel.fromDocumentSnapshot(e)).toList();
+     return category;
+
+   }catch(error){
+     print(error);
+   }
+
+  }
+   Future<List<SliderModel>> getAllSlider()async{
+   try{
+     List<DocumentSnapshot> resultList = await UserClient.userClient.getAllSlider();
+    
+   List<SliderModel> sliders = 
+     resultList.map((e) => SliderModel.fromDocumentSnapshot(e)).toList();
+     return sliders;
 
    }catch(error){
      print(error);

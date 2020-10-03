@@ -4,8 +4,10 @@ import 'package:e_commerce_project/features/admin/repositories/admin_client.dart
 import 'package:e_commerce_project/features/user/Repositories/db_repository.dart';
 import 'package:e_commerce_project/features/user/Repositories/user_Client.dart';
 import 'package:e_commerce_project/features/user/Repositories/user_repository.dart';
+import 'package:e_commerce_project/models/category_model.dart';
 import 'package:e_commerce_project/models/order_model.dart';
 import 'package:e_commerce_project/models/product_model.dart';
+import 'package:e_commerce_project/models/slider_model.dart';
 import 'package:e_commerce_project/models/userModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,7 +32,7 @@ class ECProvider extends ChangeNotifier{
   String userName;
   String userIdTest ;
   bool indecator = false;
-  FirebaseUser currentUser;
+  User currentUser;
   List<ProductModel> allOfferProducts;
   List<UserModel> allStore;
   UserModel profileStore ;
@@ -41,6 +43,8 @@ class ECProvider extends ChangeNotifier{
    int count=0;
    List<Map<String, dynamic>> allCart2;
    List<CartModel> orders2;
+   List<CategoryModel> allCategory;
+  List<SliderModel> allSliders;
 
    setCount(int value){
     this.count = value;
@@ -102,7 +106,7 @@ class ECProvider extends ChangeNotifier{
     this.userIdTest = value;
   }
 
-  setCurrentUser(FirebaseUser firebaseUser){
+  setCurrentUser(User firebaseUser){
         this.currentUser = firebaseUser;
   }
  
@@ -233,6 +237,23 @@ uploadImageCover(File fileImage , String collec)async{
     String imageurl =   await AdminClient.adminClient.uploadImage(fileImage , collec);
     this.imgCover = imageurl;
     notifyListeners();
+  }
+
+
+  getAllCategory()async{
+   List<CategoryModel> category = await  UserRepository.userRepository.getAllCaategory();
+
+   this.allCategory = category;
+   
+   notifyListeners();
+  }
+
+  getAllSliders()async{
+   List<SliderModel> sliders = await  UserRepository.userRepository.getAllSlider();
+
+   this.allSliders = sliders;
+   
+   notifyListeners();
   }
 
   

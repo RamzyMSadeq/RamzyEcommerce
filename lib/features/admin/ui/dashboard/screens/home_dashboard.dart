@@ -5,13 +5,14 @@ import 'package:e_commerce_project/features/admin/ui/dashboard/screens/add_produ
 import 'package:e_commerce_project/features/admin/ui/dashboard/screens/dashbord.dart';
 import 'package:e_commerce_project/features/admin/ui/dashboard/screens/myProducts_screens.dart';
 import 'package:e_commerce_project/features/user/ui/Screens/logIn_Screen2.dart';
-import 'package:e_commerce_project/features/user/ui/Screens/profile_trader.dart';
 import 'package:e_commerce_project/models/product_model.dart';
 import 'package:e_commerce_project/models/userModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_project/style/theme2.dart' as style;
 import 'package:provider/provider.dart';
+import 'package:e_commerce_project/features/admin/ui/dashboard/screens/profile_trader2.dart';
+
 
 class HomeDashboard extends StatefulWidget {
   @override
@@ -32,7 +33,7 @@ class _HomeDashboardState extends State<HomeDashboard> with SingleTickerProvider
   Widget build(BuildContext context) {
     AdminProvider adminProvider = Provider.of<AdminProvider>(context);
     adminProvider.currentUserId();
-    FirebaseUser fireUser = adminProvider.currentUser;
+    User fireUser = adminProvider.currentUser;
     List<ProductModel> myProducts;
     if(fireUser!= null){
       adminProvider.getProductByUserId(fireUser.uid);
@@ -59,7 +60,7 @@ class _HomeDashboardState extends State<HomeDashboard> with SingleTickerProvider
         children: [
           AddProduct(),
           DashBoard(myProducts),
-          ProfileTrader(myUserDetails)
+          ProfileTrader2(myUserDetails)
           // Container(color: Colors.yellowAccent,
           // child: Center(
           //   child: RaisedButton(

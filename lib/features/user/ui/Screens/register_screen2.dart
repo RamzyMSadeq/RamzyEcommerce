@@ -156,7 +156,7 @@ class _RegisterScreens2State extends State<RegisterScreens2> with SingleTickerPr
                     
                     //Container(color: Colors.yellowAccent),
                     RegisterUser(globalKey),
-                    RegisterTrader(globalKey2),
+                    RegisterTrader(),
 
                   ]),
               )

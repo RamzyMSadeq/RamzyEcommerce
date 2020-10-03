@@ -9,7 +9,7 @@ class UserClient{
   UserClient._();
 
   static final UserClient userClient = UserClient._();
-  Firestore firestore = Firestore.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
  // FirebaseStorage firebaseStorage = FirebaseStorage.instance;
 
  Future<List<DocumentSnapshot>> getAllOfferProduct()async{
@@ -17,9 +17,9 @@ class UserClient{
      QuerySnapshot querySnapshot = await firestore
    .collection("Products")
    .where('isOffer' , isEqualTo: true)
-   .getDocuments();
+   .get();
    
-   return querySnapshot.documents;
+   return querySnapshot.docs;
 
    }catch(error){
      print(error);
@@ -32,9 +32,9 @@ class UserClient{
     QuerySnapshot querySnapshot =  await firestore
    .collection("LogInUsers")
    .where('isAdmin' , isEqualTo: true)
-   .getDocuments();
+   .get();
 
-   return querySnapshot.documents;
+   return querySnapshot.docs;
    
 
    }catch(error){
@@ -48,9 +48,9 @@ class UserClient{
     QuerySnapshot querySnapshot =  await firestore
    .collection("LogInUsers")
    .where('userId' , isEqualTo: userId)
-   .getDocuments();
+   .get();
 
-   return querySnapshot.documents;
+   return querySnapshot.docs;
    
 
    }catch(error){
@@ -64,7 +64,7 @@ class UserClient{
      .collection("Orders")
      .add(order.toJsone());
 
-     return documentReference.documentID;
+     return documentReference.id;
     }catch(erroe){
       print(erroe);
     }
@@ -76,8 +76,8 @@ class UserClient{
    try{
      QuerySnapshot querySnapshot = await firestore
    .collection("Orders")
-   .getDocuments();
-   return querySnapshot.documents;
+   .get();
+   return querySnapshot.docs;
 
    }catch(error){
      print(error);
@@ -90,10 +90,10 @@ class UserClient{
    .collection("Products")
    .where('title' , isGreaterThanOrEqualTo: key)
    .where('title' ,isLessThan: key +'z')
-   .getDocuments();
+   .get();
    
    
-   return querySnapshot.documents;
+   return querySnapshot.docs;
 
    }catch(error){
      print(error);
@@ -105,8 +105,8 @@ class UserClient{
     try{
       firestore
       .collection('LogInUsers')
-      .document(user.id)
-      .setData(user.toJson());
+      .doc(user.id)
+      .set(user.toJson());
 
     }catch(error){
       print(error);
@@ -116,8 +116,34 @@ class UserClient{
    updateData( String documentId,String key , dynamic value)async{
      await firestore
      .collection("LogInUsers")
-     .document(documentId)
-     .updateData({'$key' : value});
+     .doc(documentId)
+     .update({'$key' : value});
+  }
+
+ Future<List<DocumentSnapshot>> getAllCategory()async{
+   try{
+     QuerySnapshot querySnapshot = await firestore
+   .collection("Categories")
+   .get();
+   return querySnapshot.docs;
+
+   }catch(error){
+     print(error);
+   }
+
+  }
+
+  Future<List<DocumentSnapshot>> getAllSlider()async{
+   try{
+     QuerySnapshot querySnapshot = await firestore
+   .collection("Slider")
+   .get();
+   return querySnapshot.docs;
+
+   }catch(error){
+     print(error);
+   }
+
   }
 
   

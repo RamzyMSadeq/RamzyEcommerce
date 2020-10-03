@@ -29,8 +29,8 @@ class _CurrentMapState extends State<CurrentMap> {
    double long=0;
 
    getCurrentLocation() async {
-    Geo.Geolocator geolocator = Geo.Geolocator();
-    Geo.Position position = await geolocator.getCurrentPosition(
+    //Geo.Geolocator geolocator = Geo.Geolocator();
+    Geo.Position position = await Geo.getCurrentPosition(
         desiredAccuracy: Geo.LocationAccuracy.high);
     LatLng myLocation = LatLng(position.latitude, position.longitude);
     myMarker.add(Marker(markerId: MarkerId("MyLocation"), position: myLocation));
